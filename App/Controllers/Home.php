@@ -1,22 +1,49 @@
 <?php
 
 namespace App\Controllers;
-
+use \Core\View;
 /**
  * Home controller
  *
  * PHP version 5.4
  */
-class Home
+class Home extends \Core\Controller
 {
+
+    /**
+     * Before filter
+     *
+     * @return void
+     */
+    protected function before()
+    {
+        
+        // return false;
+    }
+
+    /**
+     * After filter
+     *
+     * @return void
+     */
+    protected function after()
+    {
+        
+    }
 
     /**
      * Show the index page
      *
      * @return void
      */
-    public function index()
+    public function indexAction()
     {
-        require '../App/Views/Home.php';
+        
+
+        View::renderTemplate('Home/index.html', [
+            'name' => 'Jonathan',
+            'colours' => ['red', 'green', 'blue']
+        ]);
     }
 }
+
