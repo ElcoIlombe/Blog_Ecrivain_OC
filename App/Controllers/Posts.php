@@ -40,7 +40,7 @@ class Posts extends \Core\Controller
         $comments = Comments::thisComment();
         View::renderTemplate('Posts/post.html', [
             'post' => $post,
-            'comment' => $comments
+            'comments' => $comments
         ]);
     }
     /**

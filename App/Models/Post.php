@@ -47,4 +47,5 @@ class Post extends \Core\Model
     	return $results;
 
     }
+
 }
