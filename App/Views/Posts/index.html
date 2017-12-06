@@ -4,4 +4,12 @@
 {% block body %}
 	<h1> Posts </h1>
 
+	<ul>
+		{% for post in posts %}
+			<h1><a href="/posts/{{post.id}}/{{post.title}}">{{post.title}} </a></h1>
+			<p>{{post.content}}</p>
+		{% endfor %}
+	</ul>
+		
+
 {% endblock %}
