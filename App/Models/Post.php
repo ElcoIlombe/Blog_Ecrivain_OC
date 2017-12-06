@@ -21,14 +21,30 @@ class Post extends \Core\Model
         try {
             $db = static::getDB();
 
-            $stmt = $db->query('SELECT id, title, content FROM posts
-                                ORDER BY created_at');
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $req = $db->query('SELECT id, title, content FROM posts
+                                ORDER BY creation_date');
+            $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
             return $results;
             
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
+    }
+
+    public static function getOne()
+    {
+    	try 
+    	{
+    		$db = static::getDB();
+    		$stmt = $db->prepare('SELECT id, title, content FROM posts WHERE id = ?');
+
+	    	$stmt->execute(array($_GET['id']));
+	    	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    	} catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    	return $results;
+
     }
 }

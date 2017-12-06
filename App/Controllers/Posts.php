@@ -5,6 +5,8 @@ namespace App\Controllers;
 use Core\View;
 
 use App\Models\Post;
+
+use App\Models\Comments;
 /**
  * Posts controller
  *
@@ -34,7 +36,12 @@ class Posts extends \Core\Controller
      */
     public function addNewAction()
     {
-        echo 'Hello from the addNew action in the Posts controller!';
+        $post = Post::getOne();
+        $comments = Comments::thisComment();
+        View::renderTemplate('Posts/post.html', [
+            'post' => $post,
+            'comment' => $comments
+        ]);
     }
     /**
      * Show the edit page
