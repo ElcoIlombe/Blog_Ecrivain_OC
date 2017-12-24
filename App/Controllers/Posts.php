@@ -23,7 +23,7 @@ class Posts extends \Core\Controller
     public function indexAction()
     {
         $posts= Post::getAll();
-        View::renderTemplate('Posts/index.html', 
+        View::renderTemplate('Posts/index.html.twig', 
             [
                 'posts' => $posts
             ]);
@@ -38,7 +38,7 @@ class Posts extends \Core\Controller
     {
         $post = Post::getOne();
         $comments = Comments::thisComment();
-        View::renderTemplate('Posts/post.html', [
+        View::renderTemplate('Posts/post.html.twig', [
             'post' => $post,
             'comments' => $comments
         ]);
@@ -48,10 +48,13 @@ class Posts extends \Core\Controller
      *
      * @return void
      */
-    public function editAction()
+    public function commentAction()
     {
-        echo 'Hello from the edit action in the Posts controller!';
-        echo '<p>Route parameters: <pre>' .
-             htmlspecialchars(print_r($this->route_params, true)) . '</pre></p>';
+        $author = $_POST['author'];
+        $comment = $_POST['comment'];
+        $post_id = $_POST['post_id'];
+        Comments::addNew($author,$comment, $post_id);
+        header('Location: /posts/addnew?id='.$post_id);
+
     }
 }

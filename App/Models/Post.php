@@ -38,13 +38,18 @@ class Post extends \Core\Model
     	{
     		$db = static::getDB();
     		$stmt = $db->prepare('SELECT id, title, content FROM posts WHERE id = ?');
-
 	    	$stmt->execute(array($_GET['id']));
 	    	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     	} catch (PDOException $e) {
             echo $e->getMessage();
         }
-    	return $results;
+         if(sizeof($results) > 0){
+         	return $results[0];
+         }
+         else {
+         	return null;
+         }
+    	
 
     }
 

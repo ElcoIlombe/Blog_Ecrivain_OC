@@ -25,8 +25,21 @@ class Comments extends \Core\Model
         return $results;
     }
 
-    public function addNew()
+    public static function addNew($author,$comment,$post_id)
     {
+    	
+    	try {
+    		$db = static::getDB();
+    	    	$stmt = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES (:post_id,:author, :comment, NOW())');
+    	    	$stmt->execute(array(
+    	    		'post_id' => $post_id,
+    	    		'author' => $author,
+    	    		'comment' => $comment
+    	    	));
+    	    }catch (PDOException $e) {
+            echo $e->getMessage();
+        	}
+
 
     }
 }

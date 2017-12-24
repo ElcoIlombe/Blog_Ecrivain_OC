@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title%}{{post.title}}{% endblock %}
+
+{% block body %}
+		<h1> {{post.title}} </h1>
+		<p>{{post.content}}</p>
+
+	{% for comment in comments %}
+		<h3> {{comment.author}} </h3>
+		<p>{{comment.comment}}</p>
+	{% endfor %}
+	<h2> Laissez un commentaire </h2>
+
+	<form action='/posts/comment' method="post" id="comment_form">
+		<label> Nom : <br/><input type="text" name="author" placeholder="Mon nom"></label>
+		<input type="hidden" value="{{post.id}}" name="post_id">
+	</form>
+	<label> Mon message : <br/><textarea rows="4" cols="50" form="comment_form" name="comment"> </textarea> </label>
+	<br/>
+	<button type="submit" form="comment_form" value="Envoyer"> Envoyer</button>
+
+{% endblock %}
