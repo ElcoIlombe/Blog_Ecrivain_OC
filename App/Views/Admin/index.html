@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title%} Administration {% endblock %}
+{% block body %}
+	<h1>Bienvenu dans le tableau de bord {{name}}</h1>
+	
+		<section class="last_comments">
+			<h2>Les derniers commentaires</h2>
+			<ul> 
+				<li> 
+					listes des 5 derniers commentaires 
+				</li>
+			</ul>
+		</section> 
+		
+		<section class="to_manage_comments">En attente de modération 
+			<ul>
+				<li> 
+					5 derniers commentaires en attente de modération 
+				</li>
+			</ul>
+			<button> Voir tout</button>
+		</section>
+
+		<section class="last_post"> 
+			<ul> 
+				<li>
+					Les 5 derniers articles <a href="#"> Voir </a> <a href="#">Modifier</a> <a href="#"> Supprimer</a>
+				</li>
+			</ul>
+		</section>
+
+	</ul>
+{% endblock %}

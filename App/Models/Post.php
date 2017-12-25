@@ -31,7 +31,12 @@ class Post extends \Core\Model
             echo $e->getMessage();
         }
     }
-
+    /**
+    * Get all the posts as an associative array
+    * 
+    *
+    *@return array if the index of the table > 0
+    */
     public static function getOne()
     {
     	try 

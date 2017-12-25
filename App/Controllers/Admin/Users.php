@@ -1,6 +1,7 @@
 <?php 
 
 namespace App\Controllers\Admin;
+use Core\View;
 /**
  * User admin controller
  *
@@ -27,6 +28,9 @@ class Users extends \Core\Controller
 
 	public function indexAction()
 	{
-		echo 'User admin index';
+		View::renderTemplate('Admin/index.html', [
+            'name' => 'Jonathan',
+            'colours' => ['red', 'green', 'blue']
+        ]);
 	}
 }
