@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title%} Modification de billet {% endblock %}
+{% block body %}
+	<h1> Modification billet </h1>
+	<form method="post" action="/admin/users/updatepost?id={{post.id}}" id="update_form">
+		<input type="text" name="title" value="{{post.title}}" size="50">
+	</form>
+	<textarea form="update_form" cols="50" rows="4" name="content"> {{post.content}}</textarea>
+	<br/>
+	<br/>
+	<button type="submit" form="update_form" class="btn btn-primary"> Modifier</button>
+
+{% endblock %}

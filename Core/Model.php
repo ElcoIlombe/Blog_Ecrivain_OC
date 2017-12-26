@@ -12,7 +12,7 @@ abstract class Model
 		if($db === null) 
 		{
 			$host = 'localhost';
-	        $dbname = 'mvc';
+	        $dbname = 'p3';
 	        $username = 'root';
 	        $password = '';
 

@@ -57,5 +57,26 @@ class Post extends \Core\Model
     	
 
     }
+    /**
+    * Get the 5 last posts as an associative array
+    *
+    *@return array
+    */
+
+    public static function getLast()
+    {
+        try {
+            $db = static::getDB();
+
+            $req = $db->query('SELECT id, title, content FROM posts
+                                ORDER BY creation_date DESC LIMIT 5');
+            $results = $req->fetchAll(PDO::FETCH_ASSOC);
+
+            return $results;
+            
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 
 }

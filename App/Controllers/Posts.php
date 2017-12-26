@@ -44,7 +44,7 @@ class Posts extends \Core\Controller
         ]);
     }
     /**
-     * Show the edit page
+     * Show the comment per post
      *
      * @return void
      */
@@ -56,5 +56,14 @@ class Posts extends \Core\Controller
         Comments::addNew($author,$comment, $post_id);
         header('Location: /posts/addnew?id='.$post_id);
 
+    }
+
+    public function ShowAction()
+    {
+        $posts = Post::getLast();
+        var_dump($posts);
+        View::renderTemplate('Admin/index.html', [
+            'posts' => $posts,
+        ]);
     }
 }
