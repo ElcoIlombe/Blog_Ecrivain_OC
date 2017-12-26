@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title%} Création de billet {% endblock %}
+{% block body %}
+	<h1> Nouveau billet </h1>
+	<form method="post" action="/admin/users/addpost" id="update_form">
+		<input type="text" name="title" placeholder="Titre du billet" size="50">
+	</form>
+	<textarea form="update_form" cols="50" rows="4" name="content" id='mytextarea'></textarea>
+	<br/>
+	<br/>
+	<button type="submit" form="update_form" class="btn btn-primary"> Mettre en ligne </button>
+
+{% endblock %}

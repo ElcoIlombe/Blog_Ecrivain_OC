@@ -33,4 +33,23 @@ class PostAdmin extends \Core\Model
 		);
 		$stmnt->execute(array($title, $content, $id));
 	}
+
+	public static function addPost($title, $content)
+    {
+    	
+    	try {
+    		$db = static::getDB();
+    	    	$stmt = $db->prepare('INSERT INTO posts(title, content, creation_date) 
+    	    		VALUES (:title ,:content, NOW())');
+
+    	    	$stmt->execute(array(
+    	    		'title' => $title, 
+    	    		'content' =>$content
+    	    	));
+    	    }catch (PDOException $e) {
+            echo $e->getMessage();
+        	}
+
+
+    }
 }

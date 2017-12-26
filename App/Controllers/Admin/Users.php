@@ -20,7 +20,7 @@ class Users extends \Core\Controller
 	protected function before()
 	{
 		// Make sure an admin user is logget in for exemple
-		// return false;
+		//return false;
 	}
 
 	/**
@@ -58,6 +58,18 @@ class Users extends \Core\Controller
 		View::renderTemplate('Admin/update.html', [
             'name' => 'Jonathan',
             'post' => $post
+        ]);
+	}
+
+	public function addPostAction(){
+		if(isset($_POST['content']) || isset($_POST['title']))
+		{
+			$title = $_POST['title'];
+			$content = $_POST['content'];
+			PostAdmin::addPost($title, $content);
+		}
+		View::renderTemplate('Admin/addnew.html', [
+            'name' => 'Jonathan',
         ]);
 	}
 
