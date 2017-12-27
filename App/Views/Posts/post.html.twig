@@ -8,6 +8,7 @@
 	{% for comment in comments %}
 		<h3> {{comment.author}} </h3>
 		<p>{{comment.comment}}</p>
+		<a href="/posts/managecomment?id={{post.id}}&author={{post.author}}"> Signaler</a>
 	{% endfor %}
 	<h2> Laissez un commentaire </h2>
 

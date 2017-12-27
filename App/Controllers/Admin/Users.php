@@ -4,6 +4,8 @@ namespace App\Controllers\Admin;
 use Core\View;
 use App\Models\Post;
 use App\Models\Admin\PostAdmin;
+use App\Models\Admin\CommentAdmin;
+use App\Models\Comments;
 
 /**
  * User admin controller
@@ -32,9 +34,11 @@ class Users extends \Core\Controller
 	public function indexAction()
 	{
 		$posts = Post::getLast();
+		$reports = CommentAdmin::getLastReported();
 		View::renderTemplate('Admin/index.html', [
             'name' => 'Jonathan',
-            'posts' => $posts
+            'posts' => $posts,
+            'reports' => $reports
         ]);
 	}
 

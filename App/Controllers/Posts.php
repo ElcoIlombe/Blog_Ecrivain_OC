@@ -7,6 +7,8 @@ use Core\View;
 use App\Models\Post;
 
 use App\Models\Comments;
+
+use App\Models\Admin\CommentManager;
 /**
  * Posts controller
  *
@@ -66,4 +68,17 @@ class Posts extends \Core\Controller
             'posts' => $posts,
         ]);
     }
+
+    public function manageCommentAction()
+    {
+        $report = Comments::reportComment();
+        var_dump($report['author']);
+        $post_id = $report['post_id'];
+        $author = $report['author'];
+        $comment = $report['comment'];
+        $date = $report['comment_date'];
+        CommentAdmin::toManage($post_id, $author, $comment, $date);
+
+    }
+
 }

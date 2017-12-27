@@ -14,9 +14,13 @@
 		
 		<section class="to_manage_comments">En attente de modération 
 			<ul>
-				<li> 
-					5 derniers commentaires en attente de modération 
-				</li>
+				{% for post in posts %} 
+					<li>
+						<h4>{{post.title}}</h4>
+						<p> {{post.content}}</p>
+						<a href="/posts/addnew?id={{post.id}}""> Voir </a> <a href="/admin/users/updatepost?id={{post.id}}"></a> <a href="/admin/users/deletepost?id={{post.id}}"> Supprimer</a>
+					</li>
+				{% endfor %}
 			</ul>
 			<a class="btn btn-primary"> Voir tout</a>
 		</section>
