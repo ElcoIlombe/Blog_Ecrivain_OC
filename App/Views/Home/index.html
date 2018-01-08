@@ -2,14 +2,31 @@
 {% block title%}Home{% endblock %}
 
 {% block body %}
-	<h1> Hello le monde </h1>
-	<p> Hello from a Twig template, {{name}} </p>
+	
+	<div class="row">
+		<header class="col-md-12">
+			<h1> Un billet pour l'Alaska </h1>
+			<h4> Jean Forteroche </h4>
+			<hr/>
 
-	<ul> 
-		{% for colour in colours %}
-			<li> {{colour}}</li>
-		{% endfor %}
+		</header>
+	</div>
 		
-	</ul>
+	<div class="row">
+		<section class="about_home col-md-8">
+			<h2> Quelques mots </h2>
+			<p><strong>Lorem ipsum dolor</strong> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+		</section>
 
+		<section class="last_posts col-md-4">
+			<h3> Derniers articles </h3>
+				<ul> 
+					{% for colour in colours %}
+						<li> {{colour}}</li>
+					{% endfor %}
+					
+				</ul>
+		</section>
+	</div>
+	
 {% endblock %}

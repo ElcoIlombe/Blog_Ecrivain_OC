@@ -3,7 +3,7 @@
 
 {% block body %}
 		<h1> {{post.title}} </h1>
-		<p>{{post.content}}</p>
+		<p>{{post.content|raw }}</p>
 
 	{% for comment in comments %}
 		<h3> {{comment.author}} </h3>
@@ -16,7 +16,7 @@
 		<label> Nom : <br/><input type="text" name="author" placeholder="Mon nom"></label>
 		<input type="hidden" value="{{post.id}}" name="post_id">
 	</form>
-	<label> Mon message : <br/><textarea rows="4" cols="50" form="comment_form" name="comment" id="mytextarea"> </textarea> </label>
+	<label> Mon message : <br/><textarea rows="4" cols="50" form="comment_form" name="comment" id=""> </textarea> </label>
 	<br/>
 	<button type="submit" form="comment_form" value="Envoyer"> Envoyer</button>
 

@@ -46,4 +46,28 @@
             echo $e->getMessage();
         }
     }
+
+    public static function approveComment($id) {
+        try 
+        {
+            $db = static::getDB();
+            $stmnt = $db->prepare('
+                DELETE FROM tomanage_comments 
+                WHERE id = ?'
+            );
+            $stmnt->execute(array($id));
+        }
+        catch(PDOException $e)
+        {
+            echo $e->getMessage();
+        }
+    }
+        public static function deleteComment($id) {
+        $db = static::getDB();
+        $stmnt = $db->prepare('
+            DELETE FROM posts 
+            WHERE id = ?'
+        );
+        $stmnt->execute(array($id));
+    }
  }

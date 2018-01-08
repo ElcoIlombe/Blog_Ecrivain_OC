@@ -14,16 +14,7 @@ use App\Models\Comments;
  */
 class Users extends \Core\Controller
 {
-	/**
-	*Before filter
-	*
-	*@return void
-	*/
-	protected function before()
-	{
-		// Make sure an admin user is logget in for exemple
-		//return false;
-	}
+
 
 	/**
 	*Show the index page
@@ -33,26 +24,27 @@ class Users extends \Core\Controller
 
 	public function indexAction()
 	{
+		session_start();
 		$posts = Post::getLast();
 		$reports = CommentAdmin::getLastReported();
 		View::renderTemplate('Admin/index.html', [
-            'name' => 'Jonathan',
+            'name' => $_SESSION['pseudo'],
             'posts' => $posts,
             'reports' => $reports
         ]);
 	}
-
+	
 	public function deletePostAction() {
+		session_start();
 		$id = $_GET['id'];
 		$posts = Post::getLast();
 		PostAdmin::deletePost($id);
-		View::renderTemplate('Admin/index.html', [
-            'name' => 'Jonathan',
-        ]);
+		header('Location: /admin/users/index');
 	}
 	public function updatePostAction() {
 		if(isset($_POST['content']) || isset($_POST['title']))
 		{
+			session_start();
 			$title = $_POST['title'];
 			$content = $_POST['content'];
 			$id = $_GET['id'];
@@ -68,12 +60,22 @@ class Users extends \Core\Controller
 	public function addPostAction(){
 		if(isset($_POST['content']) || isset($_POST['title']))
 		{
+			session_start();
 			$title = $_POST['title'];
 			$content = $_POST['content'];
 			PostAdmin::addPost($title, $content);
 		}
 		View::renderTemplate('Admin/addnew.html', [
-            'name' => 'Jonathan',
+            'name' => 'Jonathan'
+        ]);
+	}
+	public function approveCommentAction() {
+		session_start();
+		$id = $_GET['id'];
+		$posts = CommentAdmin::getLast();
+		CommentAdmin::approveComment($id);
+		View::renderTemplate('Admin/index.html', [
+            'name' => 'Jonathan'
         ]);
 	}
 

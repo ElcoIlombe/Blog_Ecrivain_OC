@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title%} Modification de billet {% endblock %}
+{% block body %}
+	<h1> Se connecter </h1>
+	<form method="post" action="/session/signin" id="update_form">
+		<input type="text" name="pseudo" placeholder="Mon pseudo" size="50">
+		<br/><br/>
+		<input type="password" name="pass" placeholder="Mot de passe" size="50">
+	</form>
+	<button type="submit" form="update_form" class="btn btn-primary"> Modifier</button>
+
+{% endblock %}
