@@ -2,23 +2,15 @@
 {% block title%} Administration {% endblock %}
 {% block body %}
 	<h1>Bienvenu dans le tableau de bord {{name}}</h1>
-	
-		<section class="last_comments">
-			<h2>Les derniers commentaires</h2>
-			<ul> 
-				<li> 
-					listes des 5 derniers commentaires 
-				</li>
-			</ul>
-		</section> 
-		
+
 		<section class="to_manage_comments">En attente de modération 
 			<ul>
 				{% for report in reports %} 
 					<li>
 						<h4>{{report.author}}</h4>
 						<p> {{report.comment}}</p>
-						<a href="/admin/users/deletepost?id={{post.id}}"> Supprimer</a>
+						<a href="/admin/users/deletecomment?id={{report.id}}"> Supprimer
+						</a><a href="/admin/users/approvecomment?id={{report.id}}"> Approuver </a>
 					</li>
 				{% endfor %}
 			</ul>

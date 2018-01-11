@@ -4,12 +4,15 @@
 {% block body %}
 		<h1> {{post.title}} </h1>
 		<p>{{post.content|raw }}</p>
-
+	<div>
 	{% for comment in comments %}
+	<div style="display:{{display}};">
 		<h3> {{comment.author}} </h3>
 		<p>{{comment.comment}}</p>
-		<a href="/posts/managecomment?id={{post.id}}&author={{post.author}}"> Signaler</a>
+		<a href="/posts/report?id={{comment.id}}&amp;post-id={{post.id}}"> Signaler</a>
+	<div>
 	{% endfor %}
+	<div>
 	<h2> Laissez un commentaire </h2>
 
 	<form action='/posts/comment' method="post" id="comment_form">

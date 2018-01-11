@@ -7,8 +7,9 @@
 	<ul>
 		{% for post in posts %}
 			<h1><a href="/posts/addnew?id={{post.id}}">{{post.title}} </a></h1>
-			<p>{{post.content|slice (0,250) |raw}}...</p>
-			<a href="/posts/addnew?id={{post.id}}" class="btn btn-primary">lire la suite </a>
+			<h4> Posté par {{post.pseudo}}</h4>
+			<p>{{post.content|slice (0,250) |raw}}... <a href="/posts/addnew?id={{post.id}}">lire la suite </a></p>
+			
 		{% endfor %}
 	</ul>
 {% endblock %}

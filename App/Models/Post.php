@@ -21,8 +21,12 @@ class Post extends \Core\Model
         try {
             $db = static::getDB();
 
-            $req = $db->query('SELECT id, title, content FROM posts
-                                ORDER BY creation_date');
+            $req = $db->query('SELECT p.id AS id, p.title AS title, p.content AS content, m.pseudo AS pseudo
+
+                FROM member AS m
+                INNER JOIN posts AS p
+                ON p.author_id = m.id
+                                ORDER BY p.creation_date');
             $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
             return $results;

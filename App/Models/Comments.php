@@ -15,7 +15,7 @@ class Comments extends \Core\Model
         try {
             $db = static::getDB();
             
-                $stmt = $db->prepare('SELECT id, post_id, author, comment, comment_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
+                $stmt = $db->prepare('SELECT id, post_id, author, comment, comment_date, report FROM comments WHERE post_id = ? AND report = "false"  ORDER BY comment_date DESC');
             $stmt->execute(array($_GET['id']));
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
         } catch (PDOException $e) {
@@ -42,17 +42,22 @@ class Comments extends \Core\Model
 
     }
 
-    public static function reportComment()
+    public static function report()
     {
+     
         try {
             $db = static::getDB();
+
+            $stmnt = $db->prepare('
+                UPDATE comments SET report = "True" WHERE id = ?');
+            $stmnt->execute(array($_GET['id']));
+
+            $results = $stmnt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $results;
             
-                $stmt = $db->prepare('SELECT id, post_id, author, comment, comment_date FROM comments WHERE id = ? ORDER BY comment_date DESC');
-            $stmt->execute(array($_GET['id']));
-            $results = $stmt->fetch();   
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        return $results;
     }
 }

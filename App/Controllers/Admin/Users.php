@@ -26,7 +26,8 @@ class Users extends \Core\Controller
 	{
 		session_start();
 		$posts = Post::getLast();
-		$reports = CommentAdmin::getLastReported();
+		$reports = CommentAdmin::
+		getLastReported();
 		View::renderTemplate('Admin/index.html', [
             'name' => $_SESSION['pseudo'],
             'posts' => $posts,
@@ -71,12 +72,14 @@ class Users extends \Core\Controller
 	}
 	public function approveCommentAction() {
 		session_start();
-		$id = $_GET['id'];
-		$posts = CommentAdmin::getLast();
-		CommentAdmin::approveComment($id);
-		View::renderTemplate('Admin/index.html', [
-            'name' => 'Jonathan'
-        ]);
+		CommentAdmin::ApproveReported();
+		header("Location: /admin/users/index");
+	}
+
+	public function deleteCommentAction() {
+		session_start();
+		CommentAdmin::DeleteReported();
+		header("Location: /admin/users/index");
 	}
 
 }

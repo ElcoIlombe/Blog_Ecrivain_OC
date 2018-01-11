@@ -27,7 +27,7 @@ class Posts extends \Core\Controller
         $posts= Post::getAll();
         View::renderTemplate('Posts/index.html.twig', 
             [
-                'posts' => $posts
+                'posts' => $posts,
             ]);
     }
 
@@ -38,11 +38,12 @@ class Posts extends \Core\Controller
      */
     public function addNewAction()
     {
+        
         $post = Post::getOne();
         $comments = Comments::thisComment();
         View::renderTemplate('Posts/post.html.twig', [
             'post' => $post,
-            'comments' => $comments
+            'comments' => $comments,
         ]);
     }
     /**
@@ -69,16 +70,11 @@ class Posts extends \Core\Controller
         ]);
     }
 
-    public function manageCommentAction()
+    public function reportAction()
     {
-        $report = Comments::reportComment();
-        var_dump($report['author']);
-        $post_id = $report['post_id'];
-        $author = $report['author'];
-        $comment = $report['comment'];
-        $date = $report['comment_date'];
-        CommentAdmin::toManage($post_id, $author, $comment, $date);
-
+        $post_id = $_GET['post-id'];
+        $report = Comments::report();
+        header('Location: /posts/addnew?id='.$post_id);
     }
 
 }
