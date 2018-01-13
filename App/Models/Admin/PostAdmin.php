@@ -34,15 +34,16 @@ class PostAdmin extends \Core\Model
 		$stmnt->execute(array($title, $content, $id));
 	}
 
-	public static function addPost($title, $content)
+	public static function addPost($title, $content, $author_id)
     {
     	
     	try {
     		$db = static::getDB();
-    	    	$stmt = $db->prepare('INSERT INTO posts(title, content, creation_date) 
-    	    		VALUES (:title ,:content, NOW())');
+    	    	$stmt = $db->prepare('INSERT INTO posts(author_id, title, content, creation_date) 
+    	    		VALUES (:author_id, :title ,:content, NOW())');
 
     	    	$stmt->execute(array(
+    	    		'author_id'=> $author_id,
     	    		'title' => $title, 
     	    		'content' =>$content
     	    	));

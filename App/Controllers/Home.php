@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 use \Core\View;
+use App\Models\Post;
+
 /**
  * Home controller
  *
@@ -38,11 +40,10 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
-        
-
+        $posts = Post::getLast();
         View::renderTemplate('Home/index.html', [
             'name' => 'Jonathan',
-            'colours' => ['red', 'green', 'blue']
+            'posts' => $posts,
         ]);
     }
 }

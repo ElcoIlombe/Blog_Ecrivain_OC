@@ -58,14 +58,21 @@ class Users extends \Core\Controller
         ]);
 	}
 
-	public function addPostAction(){
-		if(isset($_POST['content']) || isset($_POST['title']))
+	public function addPostAction(){session_start();
+		if(isset($_POST['content']) && isset($_POST['title']))
 		{
-			session_start();
-			$title = $_POST['title'];
-			$content = $_POST['content'];
-			PostAdmin::addPost($title, $content);
+
+			if($_POST['content'] !== '' && $_POST['title'] !== '')
+		
+			{
+				$author_id = $_SESSION['id'];
+				var_dump($author_id);
+				$title = $_POST['title'];
+				$content = $_POST['content'];
+				PostAdmin::addPost($author_id,$title, $content);
+			}
 		}
+		
 		View::renderTemplate('Admin/addnew.html', [
             'name' => 'Jonathan'
         ]);

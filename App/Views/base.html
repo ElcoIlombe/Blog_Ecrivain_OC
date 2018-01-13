@@ -1,8 +1,10 @@
-<html lang="en"><head>
+<html lang="en">
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="stylesheet/less" type="text/css" href="/css/{% block style %}{% endblock %}.less">
 
     <title> {% block title %} {% endblock %}</title>
 
@@ -22,23 +24,25 @@
   </head>
 
   <body>
-    <div class="container">
-    <nav>
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <a href="/" class="nav-link">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="/posts/index" class="nav-link">Posts</a>
-          </li>
-          <li class="nav-item">
-            <a href="/session/signinpage" class="nav-link"> Admin </a>
-          </li>
-          
-      </ul>
-    </nav>
+    <div class="container-fluid {% block background %}  {% endblock %}">
+      <nav>
+          <ul class="">
+            <li class=""><a href="/">Un billet pour l'Alaska Jean Forteroche</a> </li>
+            <li class="">
+              <a href="/" class="nav-link">Accueil</a>
+            </li>
+            <li class="">
+              <a href="/posts/index" class="nav-link">Articles</a>
+            </li>
+            <li class="">
+              <a href="/session/signinpage" class=""> Admin </a>
+            </li>
+          </ul>
+      </nav>
     {% block body %}
     {% endblock %}
     </div>
+    <!-- LESS Script Libs -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
   </body>
 </html>
