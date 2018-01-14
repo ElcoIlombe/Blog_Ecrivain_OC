@@ -1,12 +1,23 @@
 {% extends "base.html" %}
-{% block title%} Modification de billet {% endblock %}
+{% block title%}Modification de billet{% endblock %}
+{% block style %}signin{% endblock %}
 {% block body %}
-	<h1> Se connecter </h1>
-	<form method="post" action="/session/signin" id="update_form">
-		<input type="text" name="pseudo" placeholder="Mon pseudo" size="50">
-		<br/><br/>
-		<input type="password" name="pass" placeholder="Mot de passe" size="50">
-	</form>
-	<button type="submit" form="update_form" class="btn btn-primary"> Modifier</button>
-
+	<div class=" row aurora-borealis signin">
+		<div class="signin_block">
+			<h1 class="text-center"> Connexion Admin </h1>
+			<div class="espaceur"></div>
+			<form method="post" action="/session/signin" id="update_form">
+			<label class="text-center">Nom d'utilisateur</label><br/><input type="text" name="pseudo" placeholder="" size="50">
+			<br/><br/>
+			<label class="text-center">Mot de passe</label><br/><input type="password" name="pass" placeholder="" size="50">
+			</form>
+			<div class="text-center">
+				<button type="submit" form="update_form" class="btn btn-primary"> Modifier</button>
+			</div>
+			<div class="espaceur"></div>
+			<p><a href="/">Retour à la page d'acceuil</a> <br/> <a href="/posts/index">Retour aux articles</a></p>
+			
+		</div> 
+		
+	</div>
 {% endblock %}
