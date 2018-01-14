@@ -8,13 +8,16 @@
 
 
 /* General */
+.container-fluid{
+	padding: 0px!important;
+}
 html,body{
 	margin: 0;
 	padding: 0;
 	width: 100%;
 }
 .contenu {
-		height: 90vh;
+		height: 90%;
 }
 /* Header */
 
@@ -58,16 +61,37 @@ header div h1{
 /* Nav */
 nav{
 	text-align: right;
-	height: 10vh;
+	width: 100vw;
+	height: 10%;
 	z-index: 999;
+	-webkit-box-shadow: 0px 6px 7px -3px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 6px 7px -3px rgba(0,0,0,0.75);
+	box-shadow: 0px 6px 7px -3px rgba(0,0,0,0.75);
 }
 
-nav ul {
+.flexbox_container{
 	display: flex;
 	flex-flow: row nowrap;
 	list-style: none;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: flex-end;
+	padding-top: 20px;
+}
+nav ul li
+{
+	padding: 0 5%;
+	font-size: 20px;
+
+
+}
+.flexbox_item:hover
+{
+	
+}
+.flex-start
+{
+	width: 100%;
+	text-align: left;
 }
 /* Main content */
 section {
@@ -88,7 +112,7 @@ img {
 	padding-bottom: @g_padding; 
 }
 .article{
-	padding: 5px 0;
+	padding: 3px;
 	-webkit-transition: box-shadow 1s; /* For Safari 3.1 to 6.0 */
     transition: box-shadow 1s;
 }

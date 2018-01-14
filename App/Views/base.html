@@ -26,16 +26,17 @@
   <body>
     <div class="container-fluid {% block background %}  {% endblock %}">
       <nav>
-          <ul class="">
-            <li class=""><a href="/">Un billet pour l'Alaska Jean Forteroche</a> </li>
-            <li class="">
-              <a href="/" class="nav-link">Accueil</a>
+          <ul class="flexbox_container">
+            <li class=" flexbox_item flex-start"><a href="/" style=" font-weight: bold">JEAN <span style="color: black;">FORTEROCHE</span></a> 
             </li>
-            <li class="">
-              <a href="/posts/index" class="nav-link">Articles</a>
+            <li class="flexbox_item">
+              <a href="/" class="nav-link"><span class="glyphicon glyphicon-home">Accueil</span></a>
             </li>
-            <li class="">
-              <a href="/session/signinpage" class=""> Admin </a>
+            <li class="flexbox_item">
+              <a href="/posts/index" class="nav-link"><span class="glyphicon glyphicon-pencil">Articles</span></a>
+            </li>
+            <li class="flexbox_item">
+              <a href="/session/signinpage" class="flexbox_item"><span class="glyphicon glyphicon-user">Admin</span></a>
             </li>
           </ul>
       </nav>
