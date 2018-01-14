@@ -40,10 +40,12 @@ class Posts extends \Core\Controller
     {
         
         $post = Post::getOne();
+        $posts= Post::getAll();
         $comments = Comments::thisComment();
         View::renderTemplate('Posts/post.html.twig', [
             'post' => $post,
             'comments' => $comments,
+            'posts' => $posts
         ]);
     }
     /**

@@ -73,7 +73,7 @@ class Post extends \Core\Model
             $db = static::getDB();
 
             $req = $db->query('SELECT id, title, content FROM posts
-                                ORDER BY creation_date DESC LIMIT 5');
+                                ORDER BY creation_date DESC LIMIT 3');
             $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
             return $results;

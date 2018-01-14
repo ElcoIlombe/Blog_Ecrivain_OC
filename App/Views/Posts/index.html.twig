@@ -1,15 +1,38 @@
 {% extends "base.html" %}
 {% block title%}Posts{% endblock %}
+{% block style %}Post{% endblock %}
 
 {% block body %}
-	<h1> Articles </h1>
-
-	<ul>
-		{% for post in posts %}
-			<h1><a href="/posts/addnew?id={{post.id}}">{{post.title}} </a></h1>
-			<h4> Posté par {{post.pseudo}}</h4>
-			<p>{{post.content|slice (0,250) |raw}}... <a href="/posts/addnew?id={{post.id}}">lire la suite </a></p>
+	<div class="row contenu">
+		<header class="col-md-6">
+			<div class="main_bg">
+				<div class="call_to_action">
+					<img src="/images/logo.png" class="img-responsive">
+					<hr>
+					<h1>Un billet Pour L'Alaska</h1>
+					<button class="btn btn-primary"> Lire le premier Chapitre</button>
+				<div>
+			</div>
+		</header>
+		<section class="col-md-6 scroll_articles" id="style-1">
+			<div class="row force-overflow">
+				<div class="col-md-12 section_content">
+					<h2>Articles </h2>	
+					<hr>
+						<div class="row ">
+							{% for post in posts %}
+								<div class="col-md-12 article center-block">
+									<h1><a href="/posts/addnew?id={{post.id}}">{{post.title}} </a></h1>
+									<h4> Posté par {{post.pseudo}}</h4>
+									<p>{{post.content|slice (0,250) |raw}}... <a href="/posts/addnew?id={{post.id}}">lire la suite </a></p>
 			
-		{% endfor %}
-	</ul>
+								</div>
+							{% endfor %}
+						</div>
+				</div>
+			</div>
+			
+		</section>
+
+	</div>
 {% endblock %}

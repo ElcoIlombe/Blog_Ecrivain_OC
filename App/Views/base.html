@@ -3,8 +3,63 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
+    <style type="text/css">
+      
+      .container-fluid{
+  padding: 0px!important;
+}
+html,body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+.contenu {
+    height: 90%;
+}
+/* Nav */
+nav{
+  text-align: right;
+  width: 100vw;
+  height: 10%;
+  z-index: 999;
+  -webkit-box-shadow: 0px 6px 7px -3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 6px 7px -3px rgba(0,0,0,0.75);
+  box-shadow: 0px 6px 7px -3px rgba(0,0,0,0.75);
+}
+
+.flexbox_container{
+  display: flex;
+  flex-flow: row nowrap;
+  list-style: none;
+  justify-content: center;
+  align-items: flex-end;
+  padding-top: 20px;
+}
+nav ul li
+{
+  padding: 0 5%;
+  font-size: 20px;
+
+
+}
+.flexbox_item:hover
+{
+  
+}
+.flex-start
+{
+  width: 100%;
+  text-align: left;
+}
+.espaceur{
+  padding: 15px;
+}
+
+    </style>
     <meta name="author" content="">
     <link rel="stylesheet/less" type="text/css" href="/css/{% block style %}{% endblock %}.less">
+
 
     <title> {% block title %} {% endblock %}</title>
 
