@@ -34,7 +34,7 @@ class PostAdmin extends \Core\Model
 		$stmnt->execute(array($title, $content, $id));
 	}
 
-	public static function addPost($title, $content, $author_id)
+	public static function addPost($author_id , $title, $content)
     {
     	
     	try {
@@ -42,11 +42,12 @@ class PostAdmin extends \Core\Model
     	    	$stmt = $db->prepare('INSERT INTO posts(author_id, title, content, creation_date) 
     	    		VALUES (:author_id, :title ,:content, NOW())');
 
-    	    	$stmt->execute(array(
+    	    	$result = $stmt->execute(array(
     	    		'author_id'=> $author_id,
     	    		'title' => $title, 
     	    		'content' =>$content
     	    	));
+    	    	var_dump($result);
     	    }catch (PDOException $e) {
             echo $e->getMessage();
         	}

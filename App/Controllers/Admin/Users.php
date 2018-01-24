@@ -58,7 +58,8 @@ class Users extends \Core\Controller
         ]);
 	}
 
-	public function addPostAction(){session_start();
+	public function addPostAction(){
+		session_start();
 		if(isset($_POST['content']) && isset($_POST['title']))
 		{
 
@@ -66,16 +67,16 @@ class Users extends \Core\Controller
 		
 			{
 				$author_id = $_SESSION['id'];
-				var_dump($author_id);
 				$title = $_POST['title'];
 				$content = $_POST['content'];
 				PostAdmin::addPost($author_id,$title, $content);
+				header('Location: /admin/users/index');
+				return;
 			}
 		}
+
+		View::renderTemplate('Admin/addnew.html');
 		
-		View::renderTemplate('Admin/addnew.html', [
-            'name' => 'Jonathan'
-        ]);
 	}
 	public function approveCommentAction() {
 		session_start();
