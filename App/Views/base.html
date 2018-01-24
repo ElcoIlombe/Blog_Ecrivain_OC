@@ -59,7 +59,62 @@
         .espaceur{
           padding: 15px;
         }
+        .haut{
+          display: none;
+        }
+        .mce-notification-inner, .mce-close, .mce-notification-warning{
+          display: none!important;
+        }
+        /*media */
 
+    @media screen and (max-width: 992px)
+      {
+        nav ul{
+          padding-top: auto;
+        }
+        nav ul li
+        {
+          padding: 0 5%;
+          font-size: 15px;
+          font-weight: 3px;
+
+        }
+        .haut{
+          display: block;
+          position: fixed;
+          bottom: 5px;
+          right: 5px;
+          background: ;
+          padding: 5px;
+          border: 1px solid gray;
+          border-radius: 30px;
+          color: black;
+        }
+}
+@media screen and (max-width: 376px)
+{
+        nav ul{
+          padding-top: auto;
+        }
+        nav ul li
+        {
+          padding: 0 2%;
+          font-size: 12px;
+          font-weight: 3px;
+
+        }
+        .haut{
+          display: block;
+          position: fixed;
+          bottom: 5px;
+          right: 5px;
+          background: ;
+          padding: 5px;
+          border: 1px solid gray;
+          border-radius: 30px;
+          color: black;
+        }
+}
     </style>
     <meta name="author" content="">
     <link rel="stylesheet/less" type="text/css" href="/css/{% block style %}{% endblock %}.less">
@@ -75,7 +130,8 @@
     <script type="text/javascript">
       tinymce.init (
       {
-        selector: '#mytextarea'
+        selector: '#mytextarea',
+        height : 300,
       });
     </script>
 
@@ -83,7 +139,7 @@
   </head>
 
   <body>
-    <div class="container-fluid {% block background %}  {% endblock %}">
+    <div class="container-fluid {% block background %}  {% endblock %}" id="top">
       <nav>
           <ul class="flexbox_container">
             <li class=" flexbox_item flex-start"><a href="/" style=" font-weight: bold">JEAN <span style="color: black;">FORTEROCHE</span></a> 
@@ -97,11 +153,14 @@
             <li class="flexbox_item">
               <a href="/session/signinpage" class="flexbox_item"><span class="glyphicon glyphicon-user">Admin</span></a>
             </li>
+            {% block connexion %} {% endblock %}
           </ul>
       </nav>
     {% block body %}
     {% endblock %}
     </div>
+    <div class="haut"> <a href="#top"><span class="glyphicon glyphicon-arrow-up
+"></span> </a></div>
     <!-- LESS Script Libs -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
   </body>

@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block title%} Création de billet {% endblock %}
+{% block connexion %}
+<li class="flexbox_item">
+    <a href="/session/signout" class="flexbox_item">Deconnexion</span></a>
+</li> 
+{% endblock %}
 {% block body %}
 	<h1> Nouveau billet </h1>
 	<form method="post" action="/admin/users/addpost" id="update_form">
@@ -9,5 +14,6 @@
 	<br/>
 	<br/>
 	<button type="submit" form="update_form" class="btn btn-primary"> Mettre en ligne </button>
+	<a href="/session/signinpage"> Retourner aux articles </a>
 
 {% endblock %}

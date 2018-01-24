@@ -1,44 +1,48 @@
 {% extends "base.html" %}
 {% block title%} Administration {% endblock %}
-{% block style %}{% endblock %}
+{% block style %}Admin{% endblock %}
+{% block connexion %}
+<li class="flexbox_item">
+    <a href="/session/signout" class="flexbox_item">Deconnexion</span></a>
+</li> 
+{% endblock %}
 
 {% block body %}
-	<h1>Bienvenu dans le tableau de bord {{name}}</h1>
 
-		<section class="to_manage_comments">En attente de modération 
-			<ul>
-				{% for report in reports %} 
-					<li>
-						<h4>{{report.author}}</h4>
-						<p> {{report.comment}}</p>
-						<a href="/admin/users/deletecomment?id={{report.id}}"> Supprimer
-						</a><a href="/admin/users/approvecomment?id={{report.id}}"> Approuver </a>
-					</li>
-				{% endfor %}
-			</ul>
-			<a class="btn btn-primary"> Voir tout</a>
-		</section>
+	
+		<div class="row text-center">
+			<h1>Bienvenu dans le tableau de bord {{name}}</h1>
+			<section class="col-md-12 text-center">En attente de modération 
+					{% for report in reports %} 
+							<h4>{{report.author}}</h4>
+							<p> {{report.comment}}</p>
+							<a href="/admin/users/deletecomment?id={{report.id}}" class="btn btn-danger"> Supprimer
+							</a> <a href="/admin/users/approvecomment?id={{report.id}}" class="btn btn-success"> Approuver </a>
+					{% endfor %}
+			</section>
+		</div>
 
-		<section class="last_post"> 
-			<ul> 
-				<h2> Derniers articles </h2>
+		<section class="last_post text-center"> 
+				<h2> Mes articles  </h2>
 				<br/>
+				<a href="/admin/users/addpost" class="btn btn-primary"> Créer un nouveau post </a>
+				<br/>
+				<br/>
+				<div class="row">
 				{% for post in posts %} 
-					<li>
-						<h4>{{post.title}}</h4>
-						<p> {{post.content|raw}}</p>
-						<a href="/posts/addnew?id={{post.id}}""> Voir </a> <a href="/admin/users/updatepost?id={{post.id}}">Modifier</a> <a href="/admin/users/deletepost?id={{post.id}}"> Supprimer</a>
-					</li>
+					<div class="col-md-3 article text-center">
+						<h3>{{post.title}}</h3>
+						<p> <small>n° de l'article : {{post.id}}</small>
+						<p>{{post.content|slice (0,250) |raw}}...
+						<br>
+						<br>
+						 <a href="/posts/addnew?id={{post.id}}" class="btn btn-primary"> Voir </a> <a href="/admin/users/updatepost?id={{post.id}}" class="btn btn-info">Modifier</a> <a href="/admin/users/deletepost?id={{post.id}}" class="btn btn-danger"> Supprimer</a></p>
+						
+					</div>
 				{% endfor %}
-			</ul>
-		</section>
-		<section>
-			<a href="/admin/users/addpost" class="btn btn-primary"> Créer un nouveau post </a>
+				</div>
 		</section>
 		<br>
-		<section>
-			<a href="/session/signout" class="btn btn-primary"> Se deconnecter</a>
-		</section>
 
 	</ul>
 {% endblock %}

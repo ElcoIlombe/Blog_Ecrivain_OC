@@ -22,7 +22,7 @@
 						<div class="row ">
 							{% for post in posts %}
 								<div class="col-md-12 article center-block">
-									<h1><a href="/posts/addnew?id={{post.id}}">{{post.title}} </a></h1>
+									<h3><a href="/posts/addnew?id={{post.id}}">{{post.title}} </a></h3>
 									<h4> Posté par {{post.pseudo}}</h4>
 									<p>{{post.content|slice (0,250) |raw}}... <a href="/posts/addnew?id={{post.id}}">lire la suite </a></p>
 			

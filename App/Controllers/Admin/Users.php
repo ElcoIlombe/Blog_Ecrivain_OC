@@ -25,7 +25,7 @@ class Users extends \Core\Controller
 	public function indexAction()
 	{
 		session_start();
-		$posts = Post::getLast();
+		$posts = Post::getAll();
 		$reports = CommentAdmin::
 		getLastReported();
 		View::renderTemplate('Admin/index.html', [
