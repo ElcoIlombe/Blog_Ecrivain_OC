@@ -65,6 +65,11 @@
         .mce-notification-inner, .mce-close, .mce-notification-warning{
           display: none!important;
         }
+        .menu-item
+        {
+          margin-left: 5px;
+        }
+
         /*media */
 
     @media screen and (max-width: 992px)
@@ -89,6 +94,9 @@
           border: 1px solid gray;
           border-radius: 30px;
           color: black;
+        }
+        .contenu {
+          padding: 0 10px;
         }
 }
 @media screen and (max-width: 376px)
@@ -151,7 +159,7 @@
               <a href="/posts/index" class="nav-link"><span class="glyphicon glyphicon-pencil">Articles</span></a>
             </li>
             <li class="flexbox_item">
-              <a href="/session/signinpage" class="flexbox_item"><span class="glyphicon glyphicon-user">Admin</span></a>
+              <a href="/session/signinpage" class="flexbox_item"><span class="glyphicon glyphicon-user"><span class="menu-item">Admin</span></span></a>
             </li>
             {% block connexion %} {% endblock %}
           </ul>

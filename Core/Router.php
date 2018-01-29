@@ -34,13 +34,10 @@ class Router
     {
         // Convert the route to a regular expression: escape forward slashes
         $route = preg_replace('/\//', '\\/', $route);
-
         // Convert variables e.g. {controller}
         $route = preg_replace('/\{([a-z]+)\}/', '(?P<\1>[a-z-]+)', $route);
-
         // Convert variables with custom regular expressions e.g. {id:\d+}
         $route = preg_replace('/\{([a-z]+):([^\}]+)\}/', '(?P<\1>\2)', $route);
-
         // Add start and end delimiters, and case insensitive flag
         $route = '/^' . $route . '$/i';
 
@@ -72,6 +69,7 @@ class Router
                 // Get named capture group values
                 foreach ($matches as $key => $match) {
                     if (is_string($key)) {
+                        echo "<stron>$key</strong> => $match <br> <br>";
                         $params[$key] = $match;
                     }
                 }
@@ -109,7 +107,6 @@ class Router
         if ($this->match($url)) {
             $controller = $this->params['controller'];
             $controller = $this->convertToStudlyCaps($controller);
-            //$controller = "App\Controllers\\$controller";
             $controller = $this->getNamespace() . $controller;
             if (class_exists($controller)) {
                 $controller_object = new $controller($this->params);
@@ -121,13 +118,13 @@ class Router
                     $controller_object->$action();
 
                 } else {
-                    throw new \Exception("Method $action in controller $controller cannot be called directly - remove the Action suffix to call this method");
+                    throw new \Exception("La méthode $action dans le controleur $controller Ne peux être directement appelée - enlevez le suffix Action pour appeler cette methode");
                 }
             } else {
-                echo "Controller class $controller not found";
+                echo "Le controleur de la classe $controller n'a pas été trouvée";
             }
         } else {
-            echo 'No route matched.';
+            echo '<p  style="text-align: center; text-decoration:none;"><strong> ERREUR 404 <br> <br><br>VOUS VOUS ÊTES TROMPÉ DE CHEMIN ! ESSAYEZ UNE AUTRE URL OU RETOURNER À LA PAGE D\'ACCEUIL <a href="/" style="color:#337ab7;">ICI</a> </strong></p>';
         }
     }
 
